@@ -1,0 +1,32 @@
+{
+  "name": "rollsum.js",
+  "version": "1.0.0",
+  "description": "Direct port of Camlisotre rollsum library.",
+  "readme": "README.md",
+  "main": "index.js",
+  "bin": {
+    "rollsum": "./bin/rollsum"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "tap": "^1.4.1"
+  },
+  "scripts": {
+    "pretest": "jshint lib bin test",
+    "test": "tap test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djblue/node-rollsum.git"
+  },
+  "keywords": [
+    "rollsum"
+  ],
+  "author": "djblue <a.s.badahdah@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djblue/node-rollsum/issues"
+  },
+  "homepage": "https://github.com/djblue/node-rollsum#readme"
+}

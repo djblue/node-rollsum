@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var rollsum = require('../');
+
+var sum = rollsum();
+var splits = 0;
+var stdin = process.stdin;
+
+stdin.on('data', function (data) {
+  stdin.pause();
+  for (var i = 0; i < data.length; i++) {
+    sum.roll(data[i]);
+    if (sum.onSplit()) {
+      splits++;
+    }
+  }
+  stdin.resume();
+});
+
+stdin.on('end', function () {
+  console.log('splits = ' + splits);
+});
