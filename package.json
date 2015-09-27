@@ -1,8 +1,7 @@
 {
-  "name": "rollsum.js",
+  "name": "rollsum",
   "version": "1.0.0",
   "description": "Direct port of Camlisotre rollsum library.",
-  "readme": "README.md",
   "main": "index.js",
   "bin": {
     "rollsum": "./bin/rollsum"
