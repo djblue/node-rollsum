@@ -9,27 +9,25 @@ var getData = function () {
   return crypto.pseudoRandomBytes(size);
 };
 
+var hash = function (data) {
+  return crypto.createHash('sha1').update(data).digest('hex');
+};
+
 var calcHashes = function (data) {
 
   var hashes = [];
-  var sum = rollsum();
-  var buff = 0;
-  var sha1 = crypto.createHash('sha1');
+  var rs = rollsum();
 
-  for (var i = 0; i < data.length; i++) {
-    buff += 1;
-    sum.roll(data[i]);
-    sha1.update(data[i] + '');
+  var i = 0;
+  var splits = rs.roll(data);
 
-    if (sum.onSplit()) {
-      hashes.push(sha1.digest('hex'));
-      sha1 = crypto.createHash('sha1');
-      buff = 0;
-    }
-  }
+  splits.forEach(function (j) {
+    hashes.push(hash(data.slice(i,j)));
+    i = j;
+  });
 
-  if (buff !== 0) {
-    hashes.push(sha1.digest('hex'));
+  if (i < data.length - 1) {
+    hashes.push(hash(data.slice(i)));
   }
 
   return hashes;

@@ -1,1 +1,1 @@
-module.exports = require('./lib/rollsum');
+module.exports = require('bindings')('addon').rollsum;
