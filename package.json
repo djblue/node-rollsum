@@ -1,6 +1,6 @@
 {
   "name": "rollsum",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "description": "A rollsum library for calculating content-based splits of buffers.",
   "scripts": {
