@@ -1,6 +1,6 @@
 {
   "name": "rollsum",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "index.js",
   "description": "A rollsum library for calculating content-based splits of buffers.",
   "scripts": {
@@ -10,7 +10,7 @@
   "bin": {
     "rollsum": "./bin/rollsum"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/djblue/node-rollsum"
   },
