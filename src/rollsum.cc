@@ -47,14 +47,22 @@ void Rollsum::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 }
 
 void Rollsum::Roll(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  
+
+  if (!info[0]->IsObject()) {
+    return Nan::ThrowTypeError("first argument should be a buffer");
+  }
+
   Rollsum* rs = ObjectWrap::Unwrap<Rollsum>(info.Holder());
 
-  v8::Local<v8::Object> bufferObj    = info[0]->ToObject();
+  v8::Local<v8::Object> bufferObj = info[0]->ToObject();
   char*         bufferData   = node::Buffer::Data(bufferObj);
   size_t        bufferLength = node::Buffer::Length(bufferObj);
 
-  size_t splits[64];
+  if (bufferLength > 65536) {
+    return Nan::ThrowRangeError("buffer exceeds maximum size of 65536");
+  }
+;
+  size_t splits[65536];
   size_t len = 0;
 
   for (size_t i = 0; i < bufferLength; i++) {

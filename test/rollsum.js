@@ -33,6 +33,24 @@ var calcHashes = function (data) {
   return hashes;
 };
 
+test('roll expects a buffer', function (t) {
+  t.plan(1);
+
+  t.throws(function () {
+    rollsum().roll(123);
+  }, new TypeError('first argument should be a buffer'));
+
+});
+
+test('roll expect certain size buffer', function (t) {
+  t.plan(1);
+
+  t.throws(function () {
+    rollsum().roll(new Buffer(65537));
+  }, new RangeError('buffer exceeds maximum size of 65536'));
+
+});
+
 // splitting data should always have the same result.
 test('splits are deterministic', function (t) {
 
