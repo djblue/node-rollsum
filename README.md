@@ -30,6 +30,9 @@ process.stdin.on('end', function () {
 });
 ```
 
+__NOTE__: the maximum buffer size you can pass to `roll` is currently
+`65536`; an error will be thrown if the buffer exceeds that size.
+
 ## cli
 
 Calculates the number of splits found in `file.txt`.
